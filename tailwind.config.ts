@@ -1,7 +1,7 @@
 /** @format */
 
 import type { Config } from 'tailwindcss';
-
+import breakpoints from './src/utils/constants/breakpoints';
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -18,6 +18,7 @@ const config: Config = {
         accentColor: '#00b4d8',
       },
     },
+    screens: breakpoints,
   },
   plugins: [],
 };

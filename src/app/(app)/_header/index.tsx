@@ -1,28 +1,27 @@
 /** @format */
-import theme from '@/src/theme';
+import theme from '@/src/utils/constants/theme';
 import clsx from 'clsx';
 import HeaderMenu from './HeaderMenu';
 import SignInOut from './SignInOut';
-import HeaderImage from './HeaderImage';
-
+import MobileOnly from '@/src/components/utils/MobileOnly';
 const headerContainerStyle = clsx(
-  'flex',
-  'flex-row',
-  'justify-between',
-  'items-center',
-  'w-1/2',
-  'px-24',
   'absolute',
-  'left-1/2',
-  'translate-x-[-50%]',
-  'py-2',
-  theme.palette.text.primary
+  'w-full',
+  theme.palette.text.primary,
+  'px-4',
+  'pt-2',
+  'flex',
+  'items-center',
+  'justify-between'
 );
 const Header = () => {
   return (
     <header id='header' className={headerContainerStyle}>
-      <HeaderImage />
-      <HeaderMenu />
+      {/* <HeaderImage /> */}
+      <MobileOnly breakpoint='md'>
+        <div></div>
+      </MobileOnly>
+      <HeaderMenu className='' />
       <SignInOut />
     </header>
   );

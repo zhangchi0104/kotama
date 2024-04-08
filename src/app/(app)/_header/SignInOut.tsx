@@ -1,6 +1,6 @@
 /** @format */
 
-import theme from '@/src/theme';
+import theme from '@/src/utils/constants/theme';
 import { getSession } from '@auth0/nextjs-auth0';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

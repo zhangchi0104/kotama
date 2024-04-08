@@ -5,7 +5,7 @@ import Headers from './_header';
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className='min-h-screen'>
-      <Headers />
+      {/* <Headers /> */}
       {children}
     </div>
   );

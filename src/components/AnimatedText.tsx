@@ -11,6 +11,7 @@ const Cursor = () => {
 
 type AnimatedTextProps = AnimatedComponentProps & {
   text: string;
+  textStyle?: string;
   hideCursorAfterAnimation?: boolean;
   hideCursor?: boolean;
 };
@@ -20,6 +21,7 @@ const AnimatedText: FC<AnimatedTextProps> = ({
   text,
   duration = 1,
   hideCursorAfterAnimation = false,
+  textStyle = '',
 }) => {
   const animationProgress = useMotionValue(0);
   const numLettersShown = useTransform(animationProgress, (value) => {
@@ -45,7 +47,7 @@ const AnimatedText: FC<AnimatedTextProps> = ({
   }, [animationProgress, text.length, duration, hideCursorAfterAnimation]);
   return (
     <div className={className}>
-      <motion.span>{textShown}</motion.span>
+      <motion.span className={textStyle}>{textShown}</motion.span>
       {showCursor && <Cursor />}
       <motion.span>{placeholderLeft}</motion.span>
     </div>

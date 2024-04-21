@@ -25,7 +25,7 @@ const SocialIcons = () => {
   const { social } = ownerData;
 
   return (
-    <div className="flex space-x-8 pt-20 items-center justify-center">
+    <div className="flex space-x-8 pt-20 items-center justify-center sm:justify-start">
       {Object.entries(social).map(([key, value], index) => (
         <PopoutTransition
           key={index}
@@ -69,7 +69,7 @@ const PortraitImage = () => {
         width={350}
         height={350}
         priority={false}
-        className="rounded-full mx-auto w-[200px] h-[200px] lg:w-auto lg:h-auto"
+        className="rounded-full mx-auto w-[240px] h-[240px] md:w-auto md:h-auto"
       />
     </div>
   );

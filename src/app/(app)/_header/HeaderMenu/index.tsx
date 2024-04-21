@@ -10,7 +10,6 @@ const headerMenuContainerStyle = clsx(
   "mx-auto",
   "px-4",
   "space-x-8",
-  "text-forground",
 );
 type HeaderMenuProps = {
   className?: string;

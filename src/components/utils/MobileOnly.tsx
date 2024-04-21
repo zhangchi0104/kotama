@@ -1,16 +1,21 @@
 /** @format */
-'use client';
-import { useMediaQuery } from '@/src/utils/hooks';
-import { PropsWithChildren, FC } from 'react';
-import breakpoints from '~/utils/constants/breakpoints';
+"use client";
+import { useIsMobile } from "@/src/utils/hooks/viewports";
+import { PropsWithChildren, FC } from "react";
+import breakpoints from "~/utils/constants/breakpoints";
+import { useIsClient } from "usehooks-ts";
 type MobileOnlyProps = PropsWithChildren<{
   breakpoint: keyof typeof breakpoints;
 }>;
-const MobileOnly: FC<MobileOnlyProps> = ({ children, breakpoint = 'sm' }) => {
-  const isMobile = useMediaQuery(`(max-width: ${breakpoints[breakpoint]})`);
-  if (isMobile) {
-    return <>{children}</>;
+const MobileOnly: FC<MobileOnlyProps> = ({ children }) => {
+  const isMobile = useIsMobile();
+  const isClient = useIsClient();
+  if (!isClient) {
+    return null;
   }
-  return null;
+  if (!isMobile) {
+    return null;
+  }
+  return <>{children}</>;
 };
 export default MobileOnly;

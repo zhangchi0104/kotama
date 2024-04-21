@@ -1,5 +1,4 @@
 /** @format */
-import theme from "@/src/utils/constants/theme";
 import clsx from "clsx";
 import HeaderMenu from "./HeaderMenu";
 import SignInOut from "./SignInOut";

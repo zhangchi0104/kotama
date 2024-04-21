@@ -1,5 +1,5 @@
 /** @format */
-
+"use client";
 import { FC } from "react";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,11 +9,13 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { socialIconColor, socialIconSize } from "./common";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 type SocialIconMappings = {
   [key: string]: {
-    url: (id: string) => string;
+    url?: (id: string) => string;
     icon: FC<{ className?: string }>;
     bgColor: string;
+    onClick?: (id: string) => void;
   };
 };
 const socialIconMappings: SocialIconMappings = {
@@ -38,6 +40,12 @@ const socialIconMappings: SocialIconMappings = {
     ),
     bgColor: "bg-bilibili",
   },
+  mail: {
+    icon: ({ className }) => (
+      <FontAwesomeIcon icon={faEnvelope} className={className} />
+    ),
+    bgColor: "bg-mail",
+  },
 };
 
 type SocialIconProps = {
@@ -51,25 +59,30 @@ const SocialIcon: FC<SocialIconProps> = ({ name, className, id }) => {
   if (!(name in socialIconMappings)) {
     throw new Error("Invalid social icon name");
   }
-  const { icon: Icon, url, bgColor } = socialIconMappings[name];
+  const { icon: Icon, url, bgColor, onClick } = socialIconMappings[name];
   const iconContainerStyle = clsx(
     [...userStlyes],
     bgColor,
     "rounded-full",
     "flex items-center justify-center",
-    "p-2 w-10 h-10",
+    "p-2 w-8 h-8",
   );
+  let onButtonClick;
+  if (onClick) {
+    onButtonClick = () => onClick(id);
+  } else if (url) {
+    onButtonClick = () => window.open(url(id), "_blank");
+  }
+
   const iconStyle = clsx(socialIconColor, socialIconSize);
   return (
     <div className={iconContainerStyle}>
-      <a
-        href={url(id)}
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
         className="flex items-center justify-center"
+        onClick={onButtonClick}
       >
         <Icon className={iconStyle} />
-      </a>
+      </button>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { store } from "../atoms/store";
 import BreakpointDetector from "./utils/BreakpointDetector";
 import { Provider as JotaiProvider } from "jotai";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-const Providers = ({ children }) => {
+const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <FlattenProviders>
       <UserProvider />

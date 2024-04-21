@@ -3,13 +3,12 @@ import theme from "@/src/utils/constants/theme";
 import clsx from "clsx";
 import HeaderMenu from "./HeaderMenu";
 import SignInOut from "./SignInOut";
-import MobileOnly from "@/src/components/utils/MobileOnly";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 const headerContainerStyle = clsx(
   "absolute",
   "w-full",
-  theme.palette.text.primary,
+  "foreground",
   "px-4",
   "pt-2",
   "flex",
@@ -22,7 +21,7 @@ const Header = () => {
       <button className="md:hidden">
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <HeaderMenu className="" />
+      <HeaderMenu />
       <SignInOut />
     </header>
   );

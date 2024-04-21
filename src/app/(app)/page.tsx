@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
 import clsx from "clsx";
-import theme from "@/src/utils/constants/theme";
 import AnimatedText from "@/src/components/AnimatedText";
 import ownerData from "@/src/app.owner.json";
 import PopoutTransition from "@/src/components/PopoutTransition";
@@ -26,7 +25,7 @@ const SocialIcons = () => {
   const { social } = ownerData;
 
   return (
-    <div className="flex space-x-8 pt-20">
+    <div className="flex space-x-8 pt-20 items-center justify-center">
       {Object.entries(social).map(([key, value], index) => (
         <PopoutTransition
           key={index}
@@ -42,7 +41,6 @@ const SocialIcons = () => {
 
 const TextSection = () => {
   const greetingStyle = clsx(
-    "text-forground",
     "text-2xl",
     "md:text-4xl",
     "sm:text-3xl",
@@ -83,7 +81,7 @@ const HomeContainer = ({ children }: { children: ReactNode }) => {
   return (
     <div className="max-w-screen-lg mx-auto">
       <div
-        className={`flex h-screen items-center ${mobileStyle} ${desktopStyle} `}
+        className={`flex safe-h-screen items-center ${mobileStyle} ${desktopStyle} `}
       >
         {children}
       </div>

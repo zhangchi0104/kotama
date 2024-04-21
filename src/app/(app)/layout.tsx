@@ -8,7 +8,7 @@ config.autoAddCss = false;
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="min-h-screen">
+    <div className="min-safe-h-screen">
       <Headers />
       {children}
     </div>

@@ -23,12 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Providers>
-        <body className={clsx(inter.className, "bg-background")}>
+        <body className={clsx(inter.className)}>
           <ThemeProvider
             attribute="class"
-            enableSystem
             defaultTheme="system"
-            disableTransitionOnChange
+            enableSystem
+            storageKey="kotama-theme"
           >
             {children}
             <Toaster />

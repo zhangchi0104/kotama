@@ -1,12 +1,14 @@
-"use client";
-import React, { Children } from "react";
+/** @format */
+
+'use client';
+import React, { Children } from 'react';
 type ComposeProvidersProps = React.PropsWithChildren<{}>;
 const FlattenProviders: React.FC<ComposeProvidersProps> = ({ children }) => {
   const childrenList = Children.toArray(children);
-  childrenList.reduce((child: any, parent: any) =>
-    React.cloneElement(parent, { children: child }),
+  const reduced = childrenList.reduceRight((child: any, parent: any) =>
+    React.cloneElement(parent, { children: child })
   );
-  return childrenList;
+  return reduced;
 };
 
 export default FlattenProviders;

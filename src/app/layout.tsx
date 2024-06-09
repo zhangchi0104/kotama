@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "../components/ui/sonner";
-import Providers from "../components/Providers";
+import ClientProviders from "../components/Providers";
 import { ThemeProvider } from "../components/utils/ThemeProvider";
 import clsx from "clsx";
-
+import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,19 +22,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Providers>
-        <body className={clsx(inter.className)}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            storageKey="kotama-theme"
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </Providers>
+      <ClerkProvider>
+        <ClientProviders>
+          <body className={clsx(inter.className)}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              storageKey="kotama-theme"
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </body>
+        </ClientProviders>
+      </ClerkProvider>
     </html>
   );
 }

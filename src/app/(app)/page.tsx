@@ -38,14 +38,6 @@ const SocialIcons = () => {
           <SocialIcon name={key} id={value} key={`social-${key}`} />
         </PopoutTransition>
       ))}
-      <button
-        onClick={async () => {
-          const token = await getToken({ template: 'postman' });
-          console.log(token);
-        }}
-      >
-        Token
-      </button>
     </div>
   );
 };

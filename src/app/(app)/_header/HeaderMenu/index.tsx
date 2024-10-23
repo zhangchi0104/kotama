@@ -3,8 +3,9 @@
 import clsx from 'clsx';
 import HeaderImage from './HeaderImage';
 import { FC } from 'react';
+import { useTranslations } from 'next-intl';
 /** @format */
-const headerMenuContainerStyle = clsx(
+const menuBarContainerStyle = clsx(
   'flex',
   'flex-row',
   'justify-center',
@@ -13,21 +14,22 @@ const headerMenuContainerStyle = clsx(
   'px-4',
   'space-x-8'
 );
-type HeaderMenuProps = {
+type MenuBarProps = {
   className?: string;
 };
-const headerMenuItemStyle = clsx('text-md', 'cursor-pointer', 'py-2 px-4');
-const HeaderMenu: FC<HeaderMenuProps> = ({ className }) => {
+const menuBarItemStyle = clsx('text-md', 'cursor-pointer', 'py-2 px-4');
+const MenuBar: FC<MenuBarProps> = ({ className }) => {
+  const t = useTranslations('Home.MenuBar');
   return (
     <div className={className}>
       <HeaderImage className='mr-4' />
-      <div className={headerMenuContainerStyle}>
-        <div className={headerMenuItemStyle}>Home</div>
-        <div className={headerMenuItemStyle}>Blog</div>
-        <div className={headerMenuItemStyle}>About Me</div>
-        <div className={headerMenuItemStyle}>Friends</div>
+      <div className={menuBarContainerStyle}>
+        <div className={menuBarItemStyle}>{t('home')}</div>
+        <div className={menuBarItemStyle}>{t('blog')}</div>
+        <div className={menuBarItemStyle}>{t('aboutMe')}</div>
+        <div className={menuBarItemStyle}>{t('friends')}</div>
       </div>
     </div>
   );
 };
-export default HeaderMenu;
+export default MenuBar;

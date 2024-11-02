@@ -1,36 +1,53 @@
 /** @format */
-"use client";
-import { Button } from "@/src/components/ui/button";
+'use client';
+import { Button } from '@/src/components/ui/button';
 import {
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTrigger,
-} from "@/src/components/ui/drawer";
-import { cn } from "@/src/utils/shadcn";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+} from '@/src/components/ui/drawer';
+
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
 interface MobileHeaderMenuProps {
   className?: string;
 }
 const MobileHeaderMenu: React.FC<MobileHeaderMenuProps> = ({ className }) => {
+  const classNames = clsx('text-xl', 'text-foreground', className);
   return (
     <Drawer>
       <DrawerTrigger>
-        <FontAwesomeIcon icon={faBars} />
+        <FontAwesomeIcon icon={faBars} className={classNames} />
       </DrawerTrigger>
-      <Content />
+      <DrawerContent>
+        <Content />
+      </DrawerContent>
     </Drawer>
   );
 };
-const Content = () => (
-  <DrawerContent>
-    <div className="w-full px-8 py-4 mb-8 space-y-4">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About me</a>
+const Content = () => {
+  const classNames = clsx('text-lg', 'text-foreground');
+  const t = useTranslations('Home.MenuBar');
+  return (
+    <div className='w-full px-8 py-6 space-y-6 flex flex-col'>
+      <Link className={classNames} href='/'>
+        {t('home')}
+      </Link>
+      <Link className={classNames} href='/blog'>
+        {t('blog')}
+      </Link>
+      <Link className={classNames} href='/about'>
+        {t('aboutMe')}
+      </Link>
+      <Link className={classNames} href='/friends'>
+        {t('friends')}
+      </Link>
     </div>
-  </DrawerContent>
-);
+  );
+};
 export default MobileHeaderMenu;

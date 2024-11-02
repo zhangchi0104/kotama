@@ -11,7 +11,7 @@ const TrailingText: React.FC<BaseStyleProps> = ({ className }) => {
   );
   return (
     <div className={classNames}>
-      <p className='text-md'>Let's Unpack</p>
+      <p className='text-md'>Let&apos;s Unpack</p>
       <ChevronDownIcon className='relative w-8 h-6' />
     </div>
   );

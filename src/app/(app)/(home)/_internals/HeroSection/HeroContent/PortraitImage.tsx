@@ -1,9 +1,10 @@
 /** @format */
 import Image from 'next/image';
+import ProfileImage from '@/public/images/profile-min.png';
 const PortraitImage = () => {
   return (
     <Image
-      src={'/images/profile-min.png'}
+      src={ProfileImage}
       alt='My Profile Image'
       width={350}
       height={350}

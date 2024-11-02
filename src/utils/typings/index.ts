@@ -1,15 +1,16 @@
 /** @format */
 
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren } from "react";
 type AnimatedComponentPropsBase = {
   duration?: number;
   delay?: number;
 };
-export type BaseProps = {
+export type BaseStyleProps = {
   className?: string;
+  style?: React.CSSProperties;
 };
 export type AnimatedComponentProps<T extends {} = {}> =
-  AnimatedComponentPropsBase & BaseProps;
+  AnimatedComponentPropsBase & BaseStyleProps & T;
 
 export type AnimatedComponentPropsWithChildren<T extends {} = {}> =
   PropsWithChildren<AnimatedComponentProps<T>>;

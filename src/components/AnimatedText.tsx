@@ -1,7 +1,13 @@
 /** @format */
 
 'use client';
-import { motion, useTransform, useMotionValue, animate } from 'framer-motion';
+import {
+  m as motion,
+  useTransform,
+  useMotionValue,
+  animate,
+  LazyMotion,
+} from 'framer-motion';
 import { FC, useEffect, useState } from 'react';
 import { AnimatedComponentProps } from '../utils/typings';
 
@@ -16,12 +22,13 @@ type AnimatedTextProps = AnimatedComponentProps & {
   hideCursor?: boolean;
 };
 
+const loadFeatures = () =>
+  import('./framerMotionFeatures').then((res) => res.default);
 const AnimatedText: FC<AnimatedTextProps> = ({
   className,
   text,
   duration = 1,
   hideCursorAfterAnimation = false,
-  textStyle = '',
 }) => {
   const animationProgress = useMotionValue(0);
   const numLettersShown = useTransform(animationProgress, (value) => {
@@ -47,9 +54,11 @@ const AnimatedText: FC<AnimatedTextProps> = ({
   }, [animationProgress, text.length, duration, hideCursorAfterAnimation]);
   return (
     <div className={className}>
-      <motion.span className={textStyle}>{textShown}</motion.span>
-      {showCursor && <Cursor />}
-      <motion.span>{placeholderLeft}</motion.span>
+      <LazyMotion features={loadFeatures}>
+        <motion.span>{textShown}</motion.span>
+        {showCursor && <Cursor />}
+        <motion.span>{placeholderLeft}</motion.span>
+      </LazyMotion>
     </div>
   );
 };

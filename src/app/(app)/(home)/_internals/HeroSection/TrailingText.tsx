@@ -1,6 +1,6 @@
 /** @format */
 
-import { ChevronDownIcon } from '@radix-ui/react-icons';
+import ChevronDownIcon from '@heroicons/react/24/outline/ChevronDownIcon';
 import clsx from 'clsx';
 import { BaseStyleProps } from '~/utils/typings';
 

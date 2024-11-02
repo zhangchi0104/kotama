@@ -1,7 +1,5 @@
 /** @format */
 
-'use client';
-
 import { BaseStyleProps } from '@/src/utils/typings';
 import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

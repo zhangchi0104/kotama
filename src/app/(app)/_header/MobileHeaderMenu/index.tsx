@@ -1,10 +1,8 @@
 /** @format */
-'use client';
-import { Button } from '@/src/components/ui/button';
+
 import {
   Drawer,
   DrawerContent,
-  DrawerHeader,
   DrawerTrigger,
 } from '@/src/components/ui/drawer';
 

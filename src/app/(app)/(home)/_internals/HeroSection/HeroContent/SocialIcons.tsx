@@ -1,5 +1,5 @@
 /** @format */
-'use client';
+
 import SocialIcon from '@/src/components/icons/SocialIcon';
 import ownerData from '@/src/app.owner.json';
 import PopoutTransition from '@/src/components/PopoutTransition';

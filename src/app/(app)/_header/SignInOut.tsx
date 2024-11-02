@@ -3,7 +3,6 @@
 import {
   SignInButton,
   UserButton,
-  ClerkLoaded,
   ClerkLoading,
   SignedIn,
   SignedOut,

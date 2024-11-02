@@ -2,7 +2,7 @@
 
 import { BaseStyleProps } from '@/src/utils/typings';
 import clsx from 'clsx';
-import AnimatedText from '~/components/AnimatedText';
+// import AnimatedText from '~/components/AnimatedText';
 type TextSectionProps = BaseStyleProps & {
   duration?: number;
 };
@@ -19,12 +19,14 @@ const TextSection: React.FC<TextSectionProps> = ({ className, duration }) => {
   );
   return (
     <div className='text-center sm:text-left'>
-      <AnimatedText
+      {/* <AnimatedText
         className={greetingStyle}
         text={"G'day I'm Alex.\nA fullstack developer"}
         duration={duration}
         hideCursorAfterAnimation
-      />
+      /> */}
+      <p className={greetingStyle}>{"G'day I'm Alex."}</p>
+      <p className={greetingStyle}>{'A fullstack developer'}</p>
     </div>
   );
 };

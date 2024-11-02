@@ -12,7 +12,7 @@ const withBundleAnalyzer = createBundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ['framer-motion'],
+    optimizePackageImports: ['framer-motion', '@radix-ui/react-icons'],
   },
 };
 

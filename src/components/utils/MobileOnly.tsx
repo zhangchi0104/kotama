@@ -1,6 +1,5 @@
 /** @format */
-'use client';
-import { useIsMobile } from '@/src/utils/hooks/viewports';
+
 import { PropsWithChildren, FC } from 'react';
 import breakpoints from '~/utils/constants/breakpoints';
 

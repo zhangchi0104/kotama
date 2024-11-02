@@ -1,5 +1,5 @@
 /** @format */
-'use client';
+
 import { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 

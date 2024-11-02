@@ -1,6 +1,6 @@
 /** @format */
 
-'use client';
+// 'use client';
 import React, { Children } from 'react';
 type ComposeProvidersProps = React.PropsWithChildren<{}>;
 const FlattenProviders: React.FC<ComposeProvidersProps> = ({ children }) => {

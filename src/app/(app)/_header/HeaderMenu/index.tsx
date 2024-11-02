@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import HeaderImage from './HeaderImage';
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 /** @format */
 const menuBarContainerStyle = clsx(
   'flex',
@@ -24,10 +25,18 @@ const MenuBar: FC<MenuBarProps> = ({ className }) => {
     <div className={className}>
       <HeaderImage className='mr-4' />
       <div className={menuBarContainerStyle}>
-        <div className={menuBarItemStyle}>{t('home')}</div>
-        <div className={menuBarItemStyle}>{t('blog')}</div>
-        <div className={menuBarItemStyle}>{t('aboutMe')}</div>
-        <div className={menuBarItemStyle}>{t('friends')}</div>
+        <Link className={menuBarItemStyle} href='/'>
+          {t('home')}
+        </Link>
+        <Link className={menuBarItemStyle} href='/blogs'>
+          {t('blog')}
+        </Link>
+        <Link className={menuBarItemStyle} href='/about'>
+          {t('aboutMe')}
+        </Link>
+        <Link className={menuBarItemStyle} href='/friends'>
+          {t('friends')}
+        </Link>
       </div>
     </div>
   );

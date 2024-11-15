@@ -108,3 +108,36 @@
     }
   }
 }
+@layer components {
+  .vertical-timeline {
+    --marker-line-width: 2px;
+    --marker-dot-size: 8px;
+  }
+  .vertical-timeline .vertical-timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: var(--marker-line-width, 2px);
+  }
+  .vertical-timeline .vertical-timeline-item {
+    position: relative;
+    @apply pl-4;
+  }
+  .vertical-timeline .vertical-timeline-item::after {
+    content: "";
+    top: 50%;
+    left: calc(-3px);
+    position: absolute;
+    height: var(--marker-dot-size, 8px);
+    width: var(--marker-dot-size, 8px);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .vertical-timeline > p:nth-child(2)::before {
+    top: 50%;
+  }
+  .vertical-timeline > p:last-child::before {
+    top: -50%;
+  }
+}

@@ -4,9 +4,9 @@ import HeaderMenu from './HeaderMenu';
 import SignInOut from './SignInOut';
 import ModeToggle from './DarkModeButton';
 import MobileHeaderMenu from './MobileHeaderMenu';
-import MobileOnly from '@/src/components/utils/MobileOnly';
-import DesktopOnly from '@/src/components/utils/DesktopOnly';
-import { Suspense } from 'react';
+import MobileOnlyByAtom from '@/src/components/utils/MobileOnlyByAtom';
+import DesktopOnlyByCss from '@/src/components/utils/DesktopOnlyByCss';
+
 import LanguageSwitcher from './LanguageSwitcher';
 import { BaseStyleProps } from '@/src/utils/typings';
 
@@ -14,6 +14,7 @@ const Header: React.FC<BaseStyleProps> = ({ className }) => {
   const headerContainerStyle = clsx(
     'abs-center-x',
     'w-full',
+    'h-20',
     'foreground',
     'px-8',
     'pt-2',
@@ -25,18 +26,15 @@ const Header: React.FC<BaseStyleProps> = ({ className }) => {
   );
   return (
     <div id='header' className={headerContainerStyle}>
-      <MobileOnly>
+      <MobileOnlyByAtom>
         <MobileHeaderMenu />
-      </MobileOnly>
-      <DesktopOnly>
+      </MobileOnlyByAtom>
+      <DesktopOnlyByCss>
         <HeaderMenu className='items-center justify-start flex-row flex' />
-      </DesktopOnly>
+      </DesktopOnlyByCss>
       <div className='flex items-center space-x-8'>
-        <ModeToggle className='h-5 w-5' />
-        <LanguageSwitcher className='px-2' />
-        <Suspense fallback={<div>Loading...</div>}>
-          <SignInOut className='w-5' />
-        </Suspense>
+        <ModeToggle className='h-5 w-5 transition-all' />
+        <LanguageSwitcher className='w-5 h-5' />
       </div>
     </div>
   );

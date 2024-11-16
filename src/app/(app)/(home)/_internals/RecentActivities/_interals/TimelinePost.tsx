@@ -2,7 +2,6 @@
 
 import { Post } from '~/utils/typings/api/base';
 import { cn } from '~/utils/shadcn';
-import { BaseStyleProps } from '~/utils/typings';
 
 type TimelinePostProps = Post & {
   dataClasses?: string;
@@ -15,19 +14,19 @@ const TimelinePost = ({
   titleClasses,
 }: TimelinePostProps) => {
   return (
-    <>
-      <p className={cn('mr-4 text-right', dataClasses)}>
+    <li className='posts-timeline-item flex flex-row'>
+      <p className={cn('mr-8 text-right', dataClasses)}>
         {createdAt.toLocaleDateString()}
       </p>
       <p
         className={cn(
-          'vertical-timeline-item before:bg-teal-500 after:bg-teal-500',
+          'grow vertical-timeline-item before:bg-teal-500 after:bg-teal-500',
           titleClasses
         )}
       >
         {title}
       </p>
-    </>
+    </li>
   );
 };
 export default TimelinePost;

@@ -1,17 +1,14 @@
 /** @format */
 
 import { Post } from '@/src/utils/typings/api/base';
-import ListView from './VerticalTimeline';
 import { cn } from '~/utils/shadcn';
 import { BaseStyleProps } from '~/utils/typings';
-import TimelinePost from './_interals/TimelinePost';
-import { useCallback } from 'react';
+
+import PostsTimeline from './_interals/PostsTimeline';
 
 /** @format */
 type RecentActivitiesProps = BaseStyleProps;
 const RecentActivities = ({ className }: RecentActivitiesProps) => {
-  const baseClass = 'grid xl:grid-cols-2 grid-cols px-4 py-2';
-  const classNames = cn(baseClass, className);
   const postsNames: Post[] = [
     {
       postId: 1,
@@ -44,34 +41,20 @@ const RecentActivities = ({ className }: RecentActivitiesProps) => {
       updatedAt: null,
     },
   ];
-  const renderFn = useCallback((it: Post, index: number) => {
-    const commonClass = cn('py-2', 'self-center');
-    const dateClasses = cn(commonClass, 'text-muted-foreground');
-    const titleClasses = cn(commonClass, 'text-foreground');
-    return (
-      <TimelinePost
-        {...it}
-        key={`timeline-post-${index}`}
-        dataClasses={dateClasses}
-        titleClasses={titleClasses}
-      />
-    );
-  }, []);
+
   return (
-    <div className={classNames}>
-      <div className='col-span-1'>
-        <ListView
-          as='div'
-          className='vertical-timeline grid grid-cols-[auto_1fr]'
-          id='posts-timeline'
-          data={postsNames}
-          render={renderFn}
-        />
-      </div>
-      <div className='col-span-1'>
-        <p>Row 1</p>
-        <p>Row 2</p>
-      </div>
+    <div
+      className={cn(
+        'divide-y divide-y-muted flex flex-col items-stretch',
+        className
+      )}
+    >
+      <PostsTimeline
+        posts={postsNames.slice(0, 2)}
+        heading='Recent Posts'
+        className='mb-4'
+      />
+      <PostsTimeline posts={[]} heading='Moments' className='pt-4' />
     </div>
   );
 };

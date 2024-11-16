@@ -8,11 +8,9 @@ config.autoAddCss = false;
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="max-w-screen-lg mx-auto">
-      <div className="w-screen">
-        <Headers />
-      </div>
-      {children}
+    <div className="mx-auto">
+      <Headers />
+      <div className="max-w-screen-xl mx-auto">{children}</div>
     </div>
   );
 };

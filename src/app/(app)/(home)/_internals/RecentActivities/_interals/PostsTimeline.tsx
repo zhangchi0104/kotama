@@ -10,25 +10,31 @@ import PostsTimelineEmptyFallback from './PostsTmelineEmptyFallback';
 type PostsTimelineProps = {
   posts: Post[];
   heading: string;
+  refDate: Date;
 } & BaseStyleProps;
 const PostsTimeline: React.FC<PostsTimelineProps> = ({
+  refDate,
   posts,
   heading,
   className,
 }) => {
-  const renderFn = useCallback((it: Post, index: number) => {
-    const commonClass = cn('py-3', 'self-center');
-    const dateClasses = cn(commonClass, 'text-muted-foreground');
-    const titleClasses = cn(commonClass, 'pl-8 text-foreground');
-    return (
-      <TimelinePost
-        {...it}
-        key={`timeline-post-${index}`}
-        dataClasses={dateClasses}
-        titleClasses={titleClasses}
-      />
-    );
-  }, []);
+  const renderFn = useCallback(
+    (it: Post, index: number) => {
+      const commonClass = cn('py-3', 'self-center');
+      const dateClasses = cn(commonClass, 'mr-4 text-muted-foreground');
+      const titleClasses = cn(commonClass, 'pl-6 text-foreground');
+      return (
+        <TimelinePost
+          {...it}
+          refDate={refDate}
+          key={`timeline-post-${index}`}
+          dataClasses={dateClasses}
+          titleClasses={titleClasses}
+        />
+      );
+    },
+    [refDate]
+  );
 
   return (
     <div className={className}>
@@ -37,7 +43,7 @@ const PostsTimeline: React.FC<PostsTimelineProps> = ({
         emptyFallback={<PostsTimelineEmptyFallback className={'w-full mt-6'} />}
         id={`${heading}-timeline`}
         as='ul'
-        className='posts-timeline mt-2 mx-4'
+        className='grid grid-cols-[auto_1fr] posts-timeline mt-2 mx-4 self-center'
         data={posts}
         render={renderFn}
       />

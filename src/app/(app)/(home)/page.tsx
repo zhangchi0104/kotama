@@ -11,7 +11,7 @@ const Home = () => {
       </section>
       <section>
         <div className='grid grid-cols-1 md:grid-cols-2'>
-          <RecentActivities className='grid-cols-1' />
+          <RecentActivities />
         </div>
       </section>
     </div>

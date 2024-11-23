@@ -5,43 +5,15 @@ import { cn } from '~/utils/shadcn';
 import { BaseStyleProps } from '~/utils/typings';
 
 import PostsTimeline from './_interals/PostsTimeline';
+import { fetchRecentBlogs } from '@/src/utils/fetcher/fetchRecentBlogs';
 
 /** @format */
 type RecentActivitiesProps = BaseStyleProps;
-const RecentActivities = ({ className }: RecentActivitiesProps) => {
-  const postsNames: Post[] = [
-    {
-      postId: 1,
-      title: 'Nextjs 14 的 App Router 初体验',
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      postId: 2,
-      title: 'Nextjs 14 的 App Router 初体验',
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      postId: 3,
-      title: 'Nextjs 14 的 App Router 初体验',
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      postId: 4,
-      title: 'Nextjs 14 的 App Router 初体验',
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-    {
-      postId: 5,
-      title: 'Nextjs 14 的 App Router 初体验',
-      createdAt: new Date(),
-      updatedAt: null,
-    },
-  ];
-
+export const RecentActivities = async ({
+  className,
+}: RecentActivitiesProps) => {
+  const { posts } = await fetchRecentBlogs(5);
+  const refDate = new Date();
   return (
     <div
       className={cn(
@@ -50,11 +22,17 @@ const RecentActivities = ({ className }: RecentActivitiesProps) => {
       )}
     >
       <PostsTimeline
-        posts={postsNames.slice(0, 2)}
+        posts={[]}
         heading='Recent Posts'
-        className='mb-4'
+        className='flex flex-col mb-4'
+        refDate={refDate}
       />
-      <PostsTimeline posts={[]} heading='Moments' className='pt-4' />
+      <PostsTimeline
+        refDate={refDate}
+        posts={[]}
+        heading='Moments'
+        className='flpt-4'
+      />
     </div>
   );
 };
